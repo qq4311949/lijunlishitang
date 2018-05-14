@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>本公司订餐系统</title>
+</head>
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+	    <td width="10%" class="nav_left1">
+                <a href="{:url('index/Index/index')}"><返回</a>
+            </td>
+            <td width="80%" class="nav_title">欢迎进入订餐系统</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+<div class="xx">
+    <div class="xx_1"><img src="__IMG__/ts.png" width="40%" height="auto"/></div>
+    <div class="xx_2">欢迎进入订餐系统</div>
+</div>
+
+<!--/*主要部分*/-->
+<div class="indexmain">
+    <form action="{:url('index/Foods/index')}" method="POST" id="form">
+        <table width="100%" border="0" cellspacing="0" class="indexmain_1">
+            <tr>
+                <td>就餐食堂：</td>
+                <td>
+                    <select id="shitang" name="shitang" size="1" class="search_1">
+                        {volist name="foodMarkers" id="vo"}
+                            <option value="{$vo.FID}" data-type="{$vo.FDCTYPE}" {if condition="$i eq 1"}selected{/if}>{$vo.FNAME}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>就餐日期：</td>
+                <td><input id="date" name="date" type="date" class="search_2" value="" /></td>
+            </tr>
+            <tr>
+                <td>就餐时段：</td>
+                <td>
+                    <select id="shiduan" name="shiduan" size="1" class="search_1">
+                        {volist name="saleTimes" id="vo"}
+                        <option value="{$vo.FID}" {if condition="$vo.FID eq 1"}selected="selected"{/if}>{$vo.FNAME}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table width="100%" border="0" cellspacing="0" class="indexmain_2">
+        <tr>
+            <td>
+                <input type="submit" id="search" value="搜索菜谱" class="text2"/>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<div class="kb"></div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var dateChecked = 0;
+        var tomorrowDate = new Date().getTomorrowDate();
+        if(tomorrowDate){
+            $('#date').val(new Date().getTomorrowDate());
+            dateChecked = 1;
+        }
+        //$('#date').val('');
+        var FDCTYPE = $('#shitang option:checked').data('type');
+        var shitangChecked = 0;
+        if($('#shitang option:checked').val()){
+            shitangChecked = 1;
+        }
+        $('#shitang').on('change', function(){
+            var val = $(this).val();
+            if(val == '' || val == null || val == undefined){
+                toast('请选择就餐食堂');
+                return false;
+            }
+            FDCTYPE = $('#shitang option[value = '+val+']').data('type');
+            //$('#date').val('');
+            shitangChecked = 1;
+        });
+        $('#date').on('change', function(){
+            var minDate = getDateStr(FDCTYPE);
+            var date = $(this).val();
+            if(date && date < minDate){
+                toast('最小就餐日期为'+minDate);
+                $(this).val('');
+                return false;
+            }
+            dateChecked = 1;
+        });
+        $('#search').on('click', function(){
+            if(!shitangChecked){
+                toast('请选择就餐食堂');
+                return false;
+            }
+            if(!dateChecked){
+                toast('请选择就餐日期');
+                return false;
+            }
+            var shiduan = $('#shiduan').val();
+            if(shiduan == '' || shiduan == null || shiduan == undefined){
+                toast('请选择就餐时段');
+                return false;
+            }
+            $('#form').submit();
+        })
+    })
+</script>
+</body>
+</html>

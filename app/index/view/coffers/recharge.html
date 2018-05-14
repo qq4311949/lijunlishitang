@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet"/>
+    <title>充值</title>
+</head>
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1"><a href='javascript:window.history.go(-1)'>
+                <返回
+            </a></td>
+            <td width="80%" class="nav_title">充值</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+<div class="my">
+    <div class="jk" style="background-color:#FFF;">
+        <table width="100%" border="0" cellspacing="0" class="my_name">
+            <tr>
+                <td class="my_maincz_p">充值金额：</td>
+                <td><input name="chongzhi" id="amount" type="text" class="my_maincz_in"/></td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" class="indexmain_2">
+            <tr>
+                <td>
+                    <!--<a href="{:url('index/Coffers/ok')}">-->
+                        <input type="submit" id="recharge" value="确认充值" class="text2"/>
+                    <!--</a>-->
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#amount').on('blur', function(){
+            var amount = $(this).val();
+            var regx = /^\d+(\.\d{1,2})?$/;
+            if(!regx.test(amount)){
+                toast('充值金额必须为正数，最多两位小数');
+                return false;
+            }
+        });
+        $('#recharge').click(function(){
+            $('#amount').trigger('blur');
+            var amount = $('#amount').val();
+            $.ajax({
+                type: 'POST',
+                url: "{:url('index/Coffers/recharge')}",
+                dataType: 'json',
+                data: {amount: amount},
+                success: function (response) {
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                    }else{
+                        toast('充值成功');
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

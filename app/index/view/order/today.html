@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <title>我的订单</title>
+</head>
+
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href='javascript:window.history.go(-1)'><返回</a>
+            </td>
+            <td width="80%" class="nav_title">我的订单</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+
+<!--/*主要部分*/-->
+<div class="takemain">
+    {volist name="list" id="vo"}
+    <div class="take">
+        <table width="100%" border="0" cellspacing="0">
+            <tr>
+                <td width="30" class="take_pic">
+                    <img src="{$vo.FIMAGE}" width="100%" height="auto"/>
+                </td>
+                <td width="50" class="take_text">
+                    <div take_text_1>{$vo.FDATE}-{$vo.FDCTIME}餐</div>
+                    <div>
+                        <div></div>
+                        <div class="jj">￥{$vo.FTOTAL}</div>
+                    </div>
+                    <div class="sj">食堂：{$vo.FMARKER}</div>
+                    <div class="sj">菜谱：{$vo.FFOODS}</div>
+                </td>
+                <td width="20" class="take_phone">
+                    <div class="dh">
+                        {if condition="$vo.FCLOSE eq 0"}
+                        <a href="{:url('index/Order/item', ['id' => $vo.FID])}">
+                        {/if}
+                            <img src="__IMG__/bd{$vo.FCLOSE}.png" width="100%" height="auto"/>
+                        {if condition="$vo.FCLOSE eq 0"}
+                        </a>
+                        {/if}
+                    </div>
+                    <div class="jl">
+                        <a href="{:url('index/Order/item', ['id' => $vo.FID])}">
+                            {if condition="$vo.FCLOSE eq 0"}去取餐{else/}已取餐{/if}
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {/volist}
+</div>
+
+<div class="kb"></div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/style.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>完善个人信息</title>
+</head>
+
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href='javascript:window.history.go(-1)'><返回</a>
+            </td>
+            <td width="80%" class="nav_title">完善个人信息</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+<!--/*主要部分*/-->
+<div class="bodymain">
+    <div class="pass">
+        <table width="90%" border="0" cellspacing="0">
+            <tr>
+                <td>姓名：</td>
+                <td><input type="text" id="username" class="work" value="{$info.FNAME|default=''}" /></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td style="float:left">
+                    <label for="man">
+                        <input type="radio" id="man" name="sex" {if condition="$info.FSEX eq 0"}checked{/if} value="0"> 男
+                    </label>
+                    <label for="woman">
+                        <input type="radio" id="woman" name="sex" {if condition="$info.FSEX eq 1"}checked{/if} value="1"> 女
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>部门：</td>
+                <td><input type="text" id="department" class="work" value="{$info.FDEPARTMENTID|default=''}" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="qrq">
+        <input type="button" id="btn" value="确认提交" class="qr">
+    </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#username').on('blur', function(){
+            var username = $(this).val();
+            if(username == '' || username == null || username == undefined){
+                toast('请填写姓名');
+                return false;
+            }
+        });
+        $('#department').on('blur', function(){
+            var department = $(this).val();
+            if(department == '' || department == null || department == undefined){
+                toast('请填写部门');
+                return false;
+            }
+        });
+        $('#btn').click(function(){
+            $('#username').trigger('blur');
+            $('#department').trigger('blur');
+            var username = $('#username').val();
+            var sex = $('[name=sex]').val();
+            var department = $('#department').val();
+            $.ajax({
+                type: 'POST',
+                url: "{:url('index/User/info')}",
+                dataType: 'json',
+                data: {username: username, sex: sex, department: department},
+                success: function (response) {
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                    }else{
+                        toast('完善个人信息成功');
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

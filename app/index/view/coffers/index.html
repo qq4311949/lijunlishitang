@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>我的金库</title>
+</head>
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href="{:url('index/Index/index')}"><返回</a>
+            </td>
+            <td width="80%" class="nav_title">我的金库</td>
+            <td width="10%" class="nav_r"><a href="{:url('index/Coffers/search')}">搜索</a></td>
+        </tr>
+    </table>
+</div>
+<div class="my">
+    <div class="jk">
+        <table width="100%" border="0" cellspacing="0" class="my_name">
+            <tr>
+                <td class="my_main_p">当前余额：{$balance.FAMOUNT}</td>
+                <td class="my_mainn_pp">
+                    <span>
+                        <!--<a href="{:url('index/Coffers/recharge')}">充值</a>-->
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="100%" border="0" cellspacing="0" class="my_name">
+        <tr>
+            <td class="my_main_p">交易记录</td>
+            <td class="my_mainn_pp"><span></span></td>
+        </tr>
+        {volist name="records" id="vo"}
+        <tr>
+            <td class="my_main_p">{$vo.FBILLNO}&nbsp;{if condition="$vo.FBILLTYPE eq 0"}充值{else/}支付{/if}&nbsp;{$vo.FDATETIME}</td>
+            <td class="my_mainn_pp">
+                {if condition="$vo.FBILLTYPE eq 0"}
+                <span>+{$vo.FAMOUNT}</span>
+                {else/}
+                -{$vo.FAMOUNT}
+                {/if}
+            </td>
+        </tr>
+        {/volist}
+    </table>
+</div>
+</body>
+</html>

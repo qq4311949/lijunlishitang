@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/style.css" rel="stylesheet" />
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>登录</title>
+</head>
+
+<body>
+<div class="login">
+    <div class="zhmm">登录</div>
+    <div class="main">
+        <table width="100%" border="0" cellspacing="0" class="mainl">
+            <tr>
+                <td class="text">
+                    <input type="text" id="number" class="text1" value="{$userNo}" placeholder="输入身份证号"/>
+                </td>
+            </tr>
+        </table>
+        <div class="linee"></div>
+        <table width="100%" border="0" cellspacing="0" class="mainl">
+            <tr>
+                <td class="text">
+                    <input type="password" id="password" class="text1" placeholder="输入密码"/>
+                </td>
+            </tr>
+        </table>
+        <div class="linee"></div>
+    </div>
+    <div class="button">
+        <input type="submit" id="login" value="登 录" class="text2" />
+    </div>
+</div>
+<div class="footrt">
+    <div class="footrt_left">
+        <a href="{:url('index/Login/register')}">注册</a>&nbsp;<a href="{:url('index/Login/forget')}">忘记密码？</a>
+    </div>
+    <div class="footrt_right">
+        <a href="{:url('marker/Sign/in')}">食堂登录</a>
+    </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#number').on('blur', function(){
+            var number = $(this).val();
+            var regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            if(!regIdNo.test(number)){
+                $('.linee').eq(0).text('身份证号填写有误');
+                return false;
+            }
+            $('.linee').eq(0).empty();
+        });
+        $('#password').on('blur', function(){
+            var password = $(this).val();
+            if(password.length < 6 || password.length > 12){
+                $('.linee').eq(1).text('密码长度6-12位');
+                return false;
+            }
+            $('.linee').eq(1).empty();
+        });
+        $('#login').click(function(){
+            $('#number').trigger('blur');
+            $('#password').trigger('blur');
+            var number = $('#number').val();
+            var password = $('#password').val();
+            $.ajax({
+                type: 'POST',
+                url: "{:url('index/Login/login')}",
+                dataType: 'json',
+                data: {number: number, password: password},
+                success: function (response) {
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                    }else{
+                        toast('登陆成功');
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

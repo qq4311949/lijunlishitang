@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>订餐管理页面</title>
+</head>
+
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href='javascript:window.history.go(-1)'><返回</a>
+            </td>
+            <td width="80%" class="nav_title">订餐管理页面</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+<div class="indexmain" style="margin-top:40px;">
+    <table width="100%" border="0" cellspacing="0" class="indexmain_1">
+        <tr>
+            <td>就餐日期：</td>
+            <td><input name="date" id="date" type="date" class="search_2"/></td>
+        </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" class="indexmain_2">
+        <tr>
+            <td>
+                <input type="submit" id="search" value="搜索订单" class="text2"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#date').val('');
+        $('#search').on('click', function(){
+            var date = $('#date').val();
+            if(date == ''){
+                toast('请选择就餐日期');
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: "{:url('marker/Index/search')}",
+                data: {date: date},
+                dataType: 'json',
+                success: function(response){
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                        return;
+                    }else{
+                        window.location.href = response.url;
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

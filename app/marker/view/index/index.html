@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <title>我的中心</title>
+</head>
+
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href="{:url('marker/Sign/in')}"><返回</a>
+            </td>
+            <td width="80%" class="nav_title">订餐管理页面</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+
+<!--/*主要部分*/-->
+<div class="my">
+
+    <table width="100%" border="0" cellspacing="0" class="my_name">
+        <tr>
+            <td class="my_main_1">
+                <div>就餐食堂：{$markerName}</div>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" class="my_2">
+        <tr>
+            <td width="30" class="my_3">
+                <a href="{:url('marker/Stat/index')}">
+                    <img src="__IMG__/jk.jpg" width="30%" height="auto"/>
+                    <p>统计</p>
+                </a>
+            </td>
+            <td width="30" class="my_4">
+                <a href="javascript:scan();">
+                    <img src="__IMG__/xh.jpg" width="30%" height="auto"/>
+                    <p>扫码</p>
+                </a>
+            </td>
+            <td width="30" class="my_4">
+                <a href="{:url('marker/Index/search')}">
+                    <img src="__IMG__/pj.jpg" width="30%" height="auto"/>
+                    <p>订餐管理</p>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" class="my_n">
+        <tr>
+            <td class="my_main_p"><a href="{:url('index/Sign/signout')}">退出当前账号</a></td>
+            <td class="my_mainn_p"><a href="{:url('index/Sign/signout')}">></a></td>
+        </tr>
+    </table>
+</div>
+
+<div class="kb"></div>
+{include file="index/jssdk" /}
+</body>
+</html>

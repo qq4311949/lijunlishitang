@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/style.css" rel="stylesheet" />
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>食堂登录</title>
+</head>
+
+<body>
+<div class="login">
+    <!--<div class="logo"></div>-->
+    <div class="zhmm">食堂登录</div>
+    <div class="main">
+        <table width="100%" border="0" cellspacing="0" class="mainl">
+            <tr>
+                <td class="text">
+                    <select id="shitang" class="text1st">
+                        {volist name="markers" id="vo"}
+                        <option value="{$vo.FID}" {if condition="$i eq 1"}selected{/if}>{$vo.FNAME}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="linee"></div>
+        <table width="100%" border="0" cellspacing="0" class="mainl">
+            <tr>
+                <td class="text">
+                    <input type="password" id="password" class="text1" placeholder="输入密码" />
+                </td>
+            </tr>
+        </table>
+        <div class="linee"></div>
+    </div>
+    <div class="button">
+        <input type="submit" id="login" value="登 录" class="text2" />
+    </div>
+</div>
+<div class="footrt">
+    <div class="footrt_left"></div>
+    <div class="footrt_right">
+        <a href="{:url('index/Login/login')}">员工登录</a>
+    </div>
+</div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var shitangChecked = 0;
+        if($('#shitang option:checked').val()){
+            shitangChecked = 1;
+        }
+        $('#shitang').on('change', function(){
+            var val = $(this).val();
+            if(val == ''){
+                $('.linee').eq(0).text('请选择就餐食堂');
+                return false;
+            }
+            shitangChecked = 1;
+        });
+        $('#password').on('blur', function(){
+            var password = $(this).val();
+            if(password.length < 6 || password.length > 12){
+                $('.linee').eq(1).text('密码长度6-12位');
+                return false;
+            }
+            $('.linee').eq(1).empty();
+        });
+        $('#login').click(function(){
+            if(!shitangChecked){
+                toast('请选择就餐食堂');
+                return false;
+            }
+            $('#password').trigger('blur');
+            var shitang = $('#shitang option:checked').val();
+            var password = $('#password').val();
+            $.ajax({
+                type: 'POST',
+                url: "{:url('marker/Sign/in')}",
+                dataType: 'json',
+                data: {shitang: shitang, password: password},
+                success: function (response) {
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                    }else{
+                        toast('登陆成功');
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>
