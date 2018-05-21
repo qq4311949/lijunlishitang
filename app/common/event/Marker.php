@@ -80,38 +80,35 @@ class Marker extends Base {
      * @return array
      */
     public function stats($params){
-	    if(config('app_status') == 'office'){
-            $sql = "SELECT FID,DATEPART(hh, FSALEDATE) as xiaoshi FROM LJL_Reservation WHERE FDATE = '{$params['date']}' AND FFOODMARKERID = '".Session::get('marker.id')."'";
-        }else{
-            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%k') as xiaoshi FROM LJL_Reservation WHERE FDATE = '{$params['date']}' AND FFOODMARKERID = '".Session::get('marker.id')."'";
-        }
-        $orders = Db::query($sql);
-        if(empty($orders)){
+        $where = [];
+        $where['FDATE'] = $params['date'];
+        $where['FFOODMARKERID'] = Session::get('marker.id');
+        $times = Db::table('LJL_Reservation')->where($where)->group('FDCTIME')->column('FDCTIME');
+        if(empty($times)){
             return [];
+        }
+        if(config('app_status') == 'office'){
+            $times = array_keys($times);
         }
         $rows = [];
-        foreach($orders as $order){
-            $sql = "SELECT t2.FNAME FROM LJL_SALETIMES t1 JOIN LJL_SALETIMES_L t2 ON t2.FID = t1.FID WHERE '".$order['xiaoshi']."' BETWEEN t1.FSTRHOUR AND t1.FENDHOUR";
-            $res = Db::query($sql);
-            if(empty($res)){
-                continue;
+        foreach ($times as $time) {
+            $key = Db::table('LJL_SALETIMES_L')->where('FID', $time)->value('FNAME');
+            $where['FDCTIME'] = $time;
+            $orderIds = Db::table('LJL_Reservation')->where($where)->column('FID');
+            if(config('app_status') == 'office'){
+                $orderIds = array_keys($orderIds);
             }
-            $rows[$res[0]['FNAME']][] = $order['FID'];
-        }
-        if(empty($rows)){
-            return [];
-        }
-        foreach($rows as $key=>$row){
-            $orderIds = implode(',', $row);
-            $sql = "SELECT FFOODID,SUM(FQTY) as FFOODNUM,SUM(FAMOUNT) AS FAMOUNT FROM LJL_Reservationentry WHERE FID in ($orderIds) GROUP BY FFOODID";
-            $items = Db::query($sql);
+            $items = Db::table('LJL_Reservationentry')->where('FID', 'in', $orderIds)->group('FFOODID')->field('FFOODID,SUM(FQTY) as FFOODNUM,SUM(FAMOUNT) AS FAMOUNT')->select();
             foreach($items as &$item){
                 $item['FNAME'] = Db::table('LJL_FOODS_L')->where('FID', $item['FFOODID'])->value('FNAME');
                 $item['FFOODNUM'] = $item['FFOODNUM'];
-                $item['FAMOUNT'] = $item['FAMOUNT'];
+                $item['FAMOUNT'] = strpos($item['FAMOUNT'], '.') == 0 ? '0'.$item['FAMOUNT'] : $item['FAMOUNT'];
                 unset($item['FFOODID']);
             }
             $rows[$key] = $items;
+        }
+        if(empty($rows)){
+            return [];
         }
         return $rows;
     }
