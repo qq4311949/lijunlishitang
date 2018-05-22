@@ -319,19 +319,18 @@ class Order extends Base {
      * @return \think\response\Json
      */
     public function scan($params) {
-        $where['FID'] = $params['id'];
-        $where['FFOODMARKERID'] = Session::get('marker.id');
-        $where['FCLOSE'] = 0;
+        $where['t1.FID'] = $params['id'];
+        $where['t1.FFOODMARKERID'] = Session::get('marker.id');
+        $where['t1.FCLOSE'] = 0;
         $row = Db::table('LJL_Reservation')
+            ->alias('t1')
+            ->join('LJL_FOODMARKER_L t2', 't2.FID = t1.FFOODMARKERID')
+            ->join('LJL_SALETIMES_L t3', 't3.FID = t1.FDCTIME')
             ->where($where)
-            ->field('FID,FDATE,FFOODMARKERID,FSALEDATE')
+            ->field('t1.FID,t1.FDATE,t1.FSALEDATE,t2.FNAME as FMARKER,t3.FNAME as SALETIME')
             ->find();
         if (!empty($row)) {
-            $row['FMARKER'] = Db::table('LJL_FOODMARKER_L')->where('FID', $row['FFOODMARKERID'])->value('FNAME');
             $row['FDATE'] = date('n月d日', strtotime($row['FDATE']));
-            $sql = "SELECT t2.FNAME FROM LJL_SALETIMES t1 JOIN LJL_SALETIMES_L t2 ON t2.FID = t1.FID WHERE '".date('G', strtotime($row['FSALEDATE']))."' BETWEEN t1.FSTRHOUR AND t1.FENDHOUR";
-            $res = Db::query($sql);
-            $row['SALETIME'] = !empty($res) ? $res[0]['FNAME'] : '';
             $row['total'] = 0;
             $row['list'] = [];
 
@@ -347,6 +346,7 @@ class Order extends Base {
                             $item['FIMAGE'] = hexChar($res[0]['FIMAGE']);
                         }
                         $item['FNAME'] = $res[0]['FNAME'];
+                        $item['FAMOUNT'] = strpos($item['FAMOUNT'], '.') == 0 ? '0'.$item['FAMOUNT'] : $item['FAMOUNT'];
                     }
                     $row['total'] += $item['FAMOUNT'];
                     $row['list'][] = $item;
@@ -381,7 +381,6 @@ class Order extends Base {
      */
     public function handle($params) {
         $where['FID'] = $params['id'];
-        $where['FEMPID'] = Session::get('user.id');
         $where['FCLOSE'] = 0;
         $row = Db::table('LJL_Reservation')->where($where)->find();
         if (empty($row)) {
