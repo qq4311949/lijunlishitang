@@ -59,7 +59,7 @@ class Login extends Base {
         $data = [];
         $data['FPKID'] = $empInfoLId;
         $data['FID'] = $empInfoId;
-        $data['FLocaleID'] = 0;
+        $data['FLocaleID'] = 2052;
         $data['FNAME'] = substr($params['number'], -4);
         $res = Db::table('LJL_EMPINFO_L')->insert($data);
         if(!$res){

@@ -75,7 +75,7 @@
 <script type="text/javascript">
     $(function () {
         var dateChecked = 0;
-        var tomorrowDate = new Date().getTomorrowDate();
+        var tomorrowDate = "{:date('Y-m-d')}";
         if(tomorrowDate){
             $('#date').val(tomorrowDate);
             dateChecked = 1;
