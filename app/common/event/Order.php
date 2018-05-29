@@ -304,14 +304,12 @@ class Order extends Base {
         if (strtotime($row['FSALEDATE']) > strtotime(date('Y-m-d 17:00:00'))) {
             return '当前时间不能取消订单';
         }
-        $amount = Db::table('LJL_Reservationentry')->where('FID', $params['id'])->value('FAMOUNT');
-        Db::startTrans();
+        $amount = Db::table('LJL_Reservationentry')->where('FID', $params['id'])->sum('FAMOUNT');
         // 用户余额
         $where = [];
         $where['FEMPID'] = Session::get('user.id');
         $res = Db::table('LJL_EMPBalance')->where($where)->setInc('FAMOUNT', $amount);
         if (!$res) {
-            Db::rollback();
             return '用户余额操作失败，请重试';
         }
 
@@ -319,13 +317,12 @@ class Order extends Base {
         $data['FEMPID'] = Session::get('user.id');
         $data['FEMPNUMBER'] = $row['FEMPNUMBER'];
         $billNosLogic = new BillNosLogic();
-        $data['FBILLNO'] = $billNosLogic->getBillNo(3);
+        $data['FBILLNO'] = $billNosLogic->getBillNo(2);
         $data['FDATETIME'] = date('Y-m-d H:i:s');
         $data['FAMOUNT'] = $amount;
         $data['FBILLTYPE'] = 2;//取消订单 退款
         $res = Db::table('LJL_RechargesOrPay')->insert($data);
         if (!$res) {
-            Db::rollback();
             return '员工交易记录插入失败，请重试';
         }
 
@@ -333,10 +330,8 @@ class Order extends Base {
         $where['FID'] = $params['id'];
         $res = Db::table('LJL_Reservation')->where($where)->delete();
         if (!$res) {
-            Db::rollback();
             return '取消订单失败';
         }
-        Db::commit();
         return '取消订单成功';
     }
 
