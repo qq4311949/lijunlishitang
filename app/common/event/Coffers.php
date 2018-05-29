@@ -33,7 +33,7 @@ class Coffers extends Base {
                 $sql .= " AND DATE_FORMAT(FDATETIME, '%Y-%m-%d') = '" . $params['date'] . "'";
             }
         }
-        $sql .= ' ORDER BY FID DESC';
+        $sql .= ' ORDER BY FDATETIME DESC';
         $rows = Db::query($sql);
         if(!empty($rows)){
             foreach($rows as & $row){
