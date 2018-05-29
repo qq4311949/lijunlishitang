@@ -43,12 +43,12 @@
         </tr>
         {volist name="records" id="vo"}
         <tr>
-            <td class="my_main_p">{$vo.FBILLNO}&nbsp;{if condition="$vo.FBILLTYPE eq 0"}充值{else/}支付{/if}&nbsp;{$vo.FDATETIME}</td>
+            <td class="my_main_p">{$vo.FBILLNO}&nbsp;{if condition="$vo.FBILLTYPE eq 0"}充值{elseif condition="$vo.FBILLTYPE eq 1"/}支付{else /}退款{/if}&nbsp;{$vo.FDATETIME}</td>
             <td class="my_mainn_pp">
-                {if condition="$vo.FBILLTYPE eq 0"}
-                <span>+{$vo.FAMOUNT}</span>
-                {else/}
+                {if condition="$vo.FBILLTYPE eq 1"}
                 -{$vo.FAMOUNT}
+                {else/}
+                <span>+{$vo.FAMOUNT}</span>
                 {/if}
             </td>
         </tr>

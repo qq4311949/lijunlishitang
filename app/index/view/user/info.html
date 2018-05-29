@@ -76,7 +76,7 @@
             $('#username').trigger('blur');
             $('#department').trigger('blur');
             var username = $('#username').val();
-            var sex = $('[name=sex]').val();
+            var sex = $('[name=sex]:checked').val();
             var department = $('#department').val();
             $.ajax({
                 type: 'POST',

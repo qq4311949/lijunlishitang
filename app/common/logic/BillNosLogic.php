@@ -13,11 +13,15 @@ class BillNosLogic {
         if(config('app_status') == 'office'){
             if($type == 0){//充值
                 $sql = "DECLARE @BILLNO VARCHAR(40)
-                    exec GETMAXNUM 'Recharges',@BILLNO output  --'Recharges', 'PAY'
+                    exec GETMAXNUM 'Recharges',@BILLNO output  --'Recharges', 'PAY', 'Refund'
                     select @BILLNO";
             }elseif($type == 1){//消费
                 $sql = "DECLARE @BILLNO VARCHAR(40)
-                    exec GETMAXNUM 'PAY',@BILLNO output  --'Recharges', 'PAY'
+                    exec GETMAXNUM 'PAY',@BILLNO output  --'Recharges', 'PAY', 'Refund
+                    select @BILLNO";
+            }elseif($type == 2){//退款
+                $sql = "DECLARE @BILLNO VARCHAR(40)
+                    exec GETMAXNUM 'Refund',@BILLNO output  --'Recharges', 'PAY', 'Refund'
                     select @BILLNO";
             }
             $res = Db::query($sql);

@@ -19,6 +19,7 @@ class Login extends Base {
     public function login($params){
         $where = [];
         $where['FNUMBER'] = $params['number'];
+        $where['FFORBIDSTATUS'] = 'A';
         $empinfoLogic = new EmpinfoLogic();
         $info = $empinfoLogic->getInfo($where);
         if(empty($info)){
@@ -48,6 +49,7 @@ class Login extends Base {
         $empInfoId = $empInfoLogic->getAutoIncId();
         $data = [];
         $data['FID'] = $empInfoId;
+        $data['FFORBIDSTATUS'] = 'B';
         $data['FNUMBER'] = $params['number'];
         $data['FPASSWORD'] = $params['password'];
         $data['FSEX'] = substr($params['number'], (strlen($params['number'] )==15 ? -2 : -1), 1) % 2 ? '0' : '1';//0男 1女
@@ -59,7 +61,7 @@ class Login extends Base {
         $data = [];
         $data['FPKID'] = $empInfoLId;
         $data['FID'] = $empInfoId;
-        $data['FLocaleID'] = 2052;
+//        $data['FLocaleID'] = 2052;
         $data['FNAME'] = substr($params['number'], -4);
         $res = Db::table('LJL_EMPINFO_L')->insert($data);
         if(!$res){
@@ -67,7 +69,7 @@ class Login extends Base {
         }
         $data = [];
         $data['FEMPID'] = $empInfoId;
-        $data['FAMOUNT'] = 999999;
+//        $data['FAMOUNT'] = 999999;
         $res = Db::table('LJL_EMPBalance')->insert($data);
         if(!$res){
             failure(0, '注册失败');

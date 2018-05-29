@@ -61,7 +61,7 @@ class Coffers extends Base {
         $data['FBILLNO'] = $billNo;
         $data['FDATETIME'] = date('Y-m-d H:i:s');
         $data['FAMOUNT'] = $params['amount'];
-        $data['FBILLTYPE'] = 0;
+        $data['FBILLTYPE'] = 0;//充值
 
         $res = Db::table('LJL_RechargesOrPay')->insert($data);
         if(!$res){
