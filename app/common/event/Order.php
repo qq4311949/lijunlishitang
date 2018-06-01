@@ -301,7 +301,7 @@ class Order extends Base {
         if (empty($row)) {
             return '该订单不存在';
         }
-        if (strtotime($row['FSALEDATE']) > strtotime(date('Y-m-d 17:00:00'))) {
+        if (strtotime($row['FSALEDATE']) > strtotime(date('Y-m-d 18:00:00'))) {
             return '当前时间不能取消订单';
         }
         $amount = Db::table('LJL_Reservationentry')->where('FID', $params['id'])->sum('FAMOUNT');
