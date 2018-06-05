@@ -80,6 +80,9 @@ class Order extends Base {
         if (empty($arr['list'])) {
             failure(0, '请选择菜品');
         }
+        if (date('G') >= '18') {
+            failure(0, '18点以后不能订餐');
+        }
         $reservationLogic = new ReservationLogic();
         $FID = $reservationLogic->getAutoIncId();
         $data = [];
