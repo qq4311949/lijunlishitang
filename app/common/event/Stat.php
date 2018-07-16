@@ -9,8 +9,8 @@
 
 namespace app\common\event;
 
-
 use think\Db;
+use think\Session;
 
 class Stat extends Base {
     /**
@@ -61,9 +61,9 @@ class Stat extends Base {
      */
     public function getSummaryData($params){
         if(config('app_status') == 'office'){
-            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE FROM LJL_Reservation WHERE CONVERT(varchar(100), FSALEDATE, 23) BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
+            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND CONVERT(varchar(100), FSALEDATE, 23) BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
         }else{
-            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE FROM LJL_Reservation WHERE DATE_FORMAT(FSALEDATE, '%Y-%m-%d') BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
+            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND DATE_FORMAT(FSALEDATE, '%Y-%m-%d') BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
         }
         $rows = Db::query($sql);
         $arr = [
@@ -85,9 +85,9 @@ class Stat extends Base {
      */
     public function getDailyData($params){
         if(config('app_status') == 'office'){
-            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE FROM LJL_Reservation WHERE CONVERT(varchar(100), FSALEDATE, 23) BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
+            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND CONVERT(varchar(100), FSALEDATE, 23) BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
         }else{
-            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE FROM LJL_Reservation WHERE DATE_FORMAT(FSALEDATE, '%Y-%m-%d') BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
+            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND DATE_FORMAT(FSALEDATE, '%Y-%m-%d') BETWEEN '". $params['date1'] ."' AND '". $params['date2'] ."'";
         }
         $rows = Db::query($sql);
         $arr = [];
@@ -123,9 +123,9 @@ class Stat extends Base {
      */
     public function getOrderData($params){
         if(config('app_status') == 'office'){
-            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE,FBILLNO FROM LJL_Reservation WHERE CONVERT(varchar(100), FSALEDATE, 23) = '". $params['date1'] ."'";
+            $sql = "SELECT FID,CONVERT(varchar(100), FSALEDATE, 23) as FSALEDATE,FBILLNO FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND CONVERT(varchar(100), FSALEDATE, 23) = '". $params['date1'] ."'";
         }else{
-            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE,FBILLNO FROM LJL_Reservation WHERE DATE_FORMAT(FSALEDATE, '%Y-%m-%d') = '". $params['date1'] ."'";
+            $sql = "SELECT FID,DATE_FORMAT(FSALEDATE, '%Y-%m-%d') as FSALEDATE,FBILLNO FROM LJL_Reservation WHERE FFOODMARKERID = '".Session::get('marker.id')."' AND DATE_FORMAT(FSALEDATE, '%Y-%m-%d') = '". $params['date1'] ."'";
         }
         $rows = Db::query($sql);
         $arr = [];
