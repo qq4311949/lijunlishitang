@@ -32,7 +32,7 @@ class Foods extends Common {
         // 时间段列表
         $saleTimes = self::$event->getSaleTimeList();
         $this->assign('foodMarkers', $foodMarkers);
-        $this->assign('date', date('Y/m/d'));
+		$this->assign('date', date('Y/m/d'));
         $this->assign('saleTimes', $saleTimes);
         return $this->fetch();
     }

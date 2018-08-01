@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f86650f-53ae-4c6a-a2a9-50f305c5c9fb" name="Default" comment="" />
+    <list default="true" id="ef3af5cd-e069-4578-8201-2dd67dd915a4" name="Default" comment="支付日志倒叙排序；菜品搜索页日期改为明天">
+      <change beforePath="" afterPath="$PROJECT_DIR$/AIS20180331134759.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/index/view/order/comment.html" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/AIS20180331134759" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/app/common/event/Foods.php" afterPath="$PROJECT_DIR$/app/common/event/Foods.php" />
+      <change beforePath="$PROJECT_DIR$/app/common/event/Marker.php" afterPath="$PROJECT_DIR$/app/common/event/Marker.php" />
+      <change beforePath="$PROJECT_DIR$/app/common/event/Order.php" afterPath="$PROJECT_DIR$/app/common/event/Order.php" />
+      <change beforePath="$PROJECT_DIR$/app/index/controller/Foods.php" afterPath="$PROJECT_DIR$/app/index/controller/Foods.php" />
+      <change beforePath="$PROJECT_DIR$/app/index/controller/Order.php" afterPath="$PROJECT_DIR$/app/index/controller/Order.php" />
+      <change beforePath="$PROJECT_DIR$/app/index/validate/Order.php" afterPath="$PROJECT_DIR$/app/index/validate/Order.php" />
+      <change beforePath="$PROJECT_DIR$/app/index/view/order/index.html" afterPath="$PROJECT_DIR$/app/index/view/order/index.html" />
+      <change beforePath="$PROJECT_DIR$/app/index/view/order/item.html" afterPath="$PROJECT_DIR$/app/index/view/order/item.html" />
+      <change beforePath="$PROJECT_DIR$/app/index/view/order/today.html" afterPath="$PROJECT_DIR$/app/index/view/order/today.html" />
+      <change beforePath="$PROJECT_DIR$/config/extra/function.php" afterPath="$PROJECT_DIR$/config/extra/function.php" />
+      <change beforePath="$PROJECT_DIR$/config/office.php" afterPath="$PROJECT_DIR$/config/office.php" />
+      <change beforePath="$PROJECT_DIR$/config/route.php" afterPath="$PROJECT_DIR$/config/route.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,50 +31,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/marker/controller/Index.php">
+      <file leaf-file-name="Order.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/common/event/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Marker.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/common/event/Marker.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1281">
-              <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+            <state relative-caret-position="5355">
+              <caret line="260" column="76" lean-forward="false" selection-start-line="260" selection-start-column="76" selection-end-line="260" selection-end-column="76" />
               <folding>
-                <marker date="1526287883100" expanded="true" signature="1189:1426" ph="SELECT t1.FI... LJL_FOODMARKER" />
-                <marker date="1526287883100" expanded="true" signature="1464:1698" ph="SELECT t1.FI... LJL_FOODMARKER" />
-                <marker date="1526287883100" expanded="true" signature="2184:2301" ph="SELECT FID F... LJL_Reservation" />
-                <marker date="1526287883100" expanded="true" signature="2644:2796" ph="SELECT FID,D... LJL_Reservation" />
-                <marker date="1526287883100" expanded="true" signature="2834:2991" ph="SELECT FID,D... LJL_Reservation" />
-                <marker date="1526287883100" expanded="true" signature="3176:3322" ph="SELECT t2.FN... LJL_SALETIMES" />
-                <marker date="1526287883100" expanded="true" signature="3656:3784" ph="SELECT FFOOD... LJL_Reservationentry" />
+                <marker date="1533027205687" expanded="true" signature="1324:1426" ph="SELECT ${$fi... LJL_FOODS" />
+                <marker date="1533027205687" expanded="true" signature="1842:2108" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
+                <marker date="1533027205687" expanded="true" signature="2226:2494" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
+                <marker date="1533027205687" expanded="true" signature="7349:7829" ph="SELECT FID,F... LJL_Reservation" />
+                <marker date="1533027205687" expanded="true" signature="8127:8248" ph="SELECT FID,F... LJL_Reservation" />
+                <marker date="1533027205687" expanded="true" signature="8127:8607" ph="SELECT FID,F... LJL_Reservation" />
+                <marker date="1533027205687" expanded="true" signature="15208:15306" ph="SELECT t1.FI... LJL_FOODS" />
+                <marker date="1533027205687" expanded="true" signature="16300:16498" ph="SELECT t1.FI... LJL_Reservation" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index/controller/Index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Jssdk.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/extend/org/wechat/Jssdk.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1911">
-              <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -65,34 +53,9 @@
       <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="4893">
+              <caret line="241" column="18" lean-forward="false" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="18" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Foods.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index/controller/Foods.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="61" column="32" lean-forward="false" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Foods.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/common/event/Foods.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="79" column="17" lean-forward="false" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
-              <folding>
-                <marker date="1526288920855" expanded="true" signature="1997:2250" ph="SELECT t1.FI... LJL_FOODS" />
-                <marker date="1526288920855" expanded="true" signature="2815:3081" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
-                <marker date="1526288920855" expanded="true" signature="3197:3465" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
-                <marker date="1526288920855" expanded="true" signature="4411:4448" ph="select FID,F... LJL_FOODGROUP_L" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -100,28 +63,80 @@
       <file leaf-file-name="Order.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index/controller/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1995">
-              <caret line="97" column="57" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="97" selection-end-column="57" />
+            <state relative-caret-position="1680">
+              <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index/view/order/item.html">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/index/view/order/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+            <state relative-caret-position="451">
+              <caret line="135" column="49" lean-forward="true" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="today.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index/view/order/today.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1155">
+              <caret line="55" column="42" lean-forward="false" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/static/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index/view/order/comment.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2037">
+              <caret line="97" column="21" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="97" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#textarea#0;n#td#1;n#tr#1;n#table#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Foods.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index/controller/Foods.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Order.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/marker/controller/Order.php">
+        <entry file="file://$PROJECT_DIR$/app/index/validate/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="966">
+              <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="route.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/route.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -131,8 +146,29 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>FSALEPRICE</find>
+      <find>BillNosLogic</find>
+      <find>FEMPNUMBER</find>
+      <find>FBILLTYPE</find>
+      <find>scan</find>
+      <find>session</find>
+      <find>comment</find>
+      <find>search</find>
+      <find>insert</find>
+      <find>getOrderList</find>
+      <find>join</find>
+      <find>config(</find>
+      <find>pag</find>
+      <find>config('paginate.list_rows')</find>
+      <find>\n</find>
+      <find>for</find>
     </findStrings>
+    <replaceStrings>
+      <replace>PAGE_SIZE</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\WWW\LJL\app\common\event</dir>
+      <dir>D:\WWW\LJL\app\index\view</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -140,14 +176,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/marker/view/index/index.html" />
-        <option value="$PROJECT_DIR$/app/marker/controller/Index.php" />
-        <option value="$PROJECT_DIR$/extend/org/wechat/Jssdk.php" />
+        <option value="$PROJECT_DIR$/app/index/view/user/info.html" />
+        <option value="$PROJECT_DIR$/app/common/event/Login.php" />
+        <option value="$PROJECT_DIR$/app/index/view/coffers/index.html" />
+        <option value="$PROJECT_DIR$/app/index/view/foods/search.html" />
+        <option value="$PROJECT_DIR$/app/common/event/Coffers.php" />
+        <option value="$PROJECT_DIR$/app/common/event/Stat.php" />
         <option value="$PROJECT_DIR$/config/office.php" />
-        <option value="$PROJECT_DIR$/app/index/controller/Order.php" />
+        <option value="$PROJECT_DIR$/app/common/logic/BillNosLogic.php" />
+        <option value="$PROJECT_DIR$/app/index/validate/Order.php" />
+        <option value="$PROJECT_DIR$/app/index/view/order/comment.html" />
+        <option value="$PROJECT_DIR$/app/index/view/order/cancel.html" />
         <option value="$PROJECT_DIR$/app/index/view/order/item.html" />
-        <option value="$PROJECT_DIR$/app/common/event/Marker.php" />
-        <option value="$PROJECT_DIR$/app/common/event/Foods.php" />
+        <option value="$PROJECT_DIR$/app/index/controller/Order.php" />
+        <option value="$PROJECT_DIR$/config/route.php" />
+        <option value="$PROJECT_DIR$/app/index/view/order/today.html" />
+        <option value="$PROJECT_DIR$/app/common/event/Order.php" />
+        <option value="$PROJECT_DIR$/app/index/view/order/index.html" />
       </list>
     </option>
   </component>
@@ -165,13 +210,12 @@
       <path value="$PROJECT_DIR$/vendor/topthink/think-installer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -204,34 +248,12 @@
               <item name="LJL" type="b2602c69:ProjectViewProjectNode" />
               <item name="LJL" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="common" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="LJL" type="b2602c69:ProjectViewProjectNode" />
               <item name="LJL" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="LJL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LJL" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="index" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="LJL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LJL" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="marker" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="LJL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LJL" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="marker" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -243,6 +265,13 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../eshop" />
+    <property name="SearchEverywhereHistoryKey" value="common.js&#9;null&#9;null" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WWW\LJL\app\index\view\order" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -264,33 +293,86 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5f86650f-53ae-4c6a-a2a9-50f305c5c9fb" name="Default" comment="" />
-      <created>1526281906922</created>
+      <changelist id="ef3af5cd-e069-4578-8201-2dd67dd915a4" name="Default" comment="" />
+      <created>1527468279892</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526281906922</updated>
-      <workItem from="1526281908046" duration="5658000" />
-      <workItem from="1526290686559" duration="83000" />
+      <updated>1527468279892</updated>
+      <workItem from="1527468281416" duration="5102000" />
+      <workItem from="1527560041306" duration="6902000" />
+      <workItem from="1527812990365" duration="1849000" />
+      <workItem from="1528178887747" duration="31000" />
+      <workItem from="1528192899689" duration="245000" />
+      <workItem from="1530751128972" duration="687000" />
+      <workItem from="1530848119880" duration="413000" />
+      <workItem from="1531536654241" duration="2586000" />
+      <workItem from="1531703601738" duration="73000" />
+      <workItem from="1532936837610" duration="9451000" />
+      <workItem from="1533002313157" duration="11639000" />
+      <workItem from="1533083988333" duration="624000" />
     </task>
+    <task id="LOCAL-00001" summary="搜索菜品页默认日期；注册登录需后台审核；取消订单，余额返回；">
+      <created>1527583166039</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1527583166039</updated>
+    </task>
+    <task id="LOCAL-00002" summary="支付日志倒叙排序；菜品搜索页日期改为明天">
+      <created>1527584159724</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1527584159724</updated>
+    </task>
+    <task id="LOCAL-00003" summary="支付日志FDATETIME倒叙排序">
+      <created>1527586197149</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1527586197149</updated>
+    </task>
+    <task id="LOCAL-00004" summary="取消订单时间17点改为18点">
+      <created>1527814329047</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1527814329047</updated>
+    </task>
+    <task id="LOCAL-00005" summary="18点以后不能订餐">
+      <created>1528193123629</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1528193123630</updated>
+    </task>
+    <task id="LOCAL-00006" summary="统计查询，添加食堂条件">
+      <created>1531703655531</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1531703655531</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5741000" />
+    <option name="totallyTimeSpent" value="39602000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25266525" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14552239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -303,242 +385,446 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="搜索菜品页默认日期；注册登录需后台审核；取消订单，余额返回；" />
+    <MESSAGE value="支付日志倒叙排序；菜品搜索页日期改为明天" />
+    <MESSAGE value="支付日志FDATETIME倒叙排序" />
+    <MESSAGE value="取消订单时间17点改为18点" />
+    <MESSAGE value="18点以后不能订餐" />
+    <MESSAGE value="统计查询，添加食堂条件" />
+    <option name="LAST_COMMIT_MESSAGE" value="统计查询，添加食堂条件" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/marker/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/app/common/event/Order.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="6258">
+          <caret line="303" column="67" lean-forward="false" selection-start-line="303" selection-start-column="67" selection-end-line="303" selection-end-column="67" />
+          <folding>
+            <marker date="1533027205687" expanded="true" signature="1324:1426" ph="SELECT ${$fi... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="1842:2108" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="2226:2494" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="7349:7829" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8248" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8607" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="15208:15306" ph="SELECT t1.FI... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="16300:16498" ph="SELECT t1.FI... LJL_Reservation" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6321">
+          <caret line="306" column="86" lean-forward="false" selection-start-line="306" selection-start-column="86" selection-end-line="306" selection-end-column="86" />
+          <folding>
+            <marker date="1533027205687" expanded="true" signature="1324:1426" ph="SELECT ${$fi... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="1842:2108" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="2226:2494" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="7349:7829" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8248" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8607" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="15208:15306" ph="SELECT t1.FI... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="16300:16498" ph="SELECT t1.FI... LJL_Reservation" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/logic/BillNosLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Coffers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="51" column="38" lean-forward="false" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/coffers/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="61" lean-forward="false" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/user/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="77" column="39" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/foods/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="77" column="67" lean-forward="true" selection-start-line="77" selection-start-column="67" selection-end-line="77" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Coffers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/user/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="77" column="39" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/logic/EmpinfoLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/logic/ReservationLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Coffers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="51" column="38" lean-forward="false" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/coffers/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="61" lean-forward="false" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/user/info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="77" column="39" lean-forward="false" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Coffers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="26" column="38" lean-forward="false" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/marker/controller/Stat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Stat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="63" column="191" lean-forward="false" selection-start-line="63" selection-start-column="182" selection-end-line="63" selection-end-column="191" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/common/event/Marker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <marker date="1526287883100" expanded="true" signature="1189:1426" ph="SELECT t1.FI... LJL_FOODMARKER" />
-            <marker date="1526287883100" expanded="true" signature="1464:1698" ph="SELECT t1.FI... LJL_FOODMARKER" />
-            <marker date="1526287883100" expanded="true" signature="2184:2301" ph="SELECT FID F... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="2644:2796" ph="SELECT FID,D... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="2834:2991" ph="SELECT FID,D... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="3176:3322" ph="SELECT t2.FN... LJL_SALETIMES" />
-            <marker date="1526287883100" expanded="true" signature="3656:3784" ph="SELECT FFOOD... LJL_Reservationentry" />
-          </folding>
+        <state relative-caret-position="744">
+          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/config/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extend/org/wechat/Jssdk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1911">
-          <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Foods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="61" column="32" lean-forward="false" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="97" column="57" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="97" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/view/order/item.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/marker/controller/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/event/Foods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="79" column="17" lean-forward="false" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
-          <folding>
-            <marker date="1526288920855" expanded="true" signature="1997:2250" ph="SELECT t1.FI... LJL_FOODS" />
-            <marker date="1526288920855" expanded="true" signature="2815:3081" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
-            <marker date="1526288920855" expanded="true" signature="3197:3465" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
-            <marker date="1526288920855" expanded="true" signature="4411:4448" ph="select FID,F... LJL_FOODGROUP_L" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/marker/view/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="67" column="26" lean-forward="false" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thinkphp/helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="102" column="13" lean-forward="false" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extend/org/wechat/Jssdk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1911">
-          <caret line="91" column="5" lean-forward="false" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/office.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="36" />
+          <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
+    <entry file="file://$PROJECT_DIR$/app/index/view/login/reset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="89" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/foods/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="6" lean-forward="true" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/logic/BillNosLogic.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/index/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/controller/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/validate/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/view/foods/index.html">
+    <entry file="file://$PROJECT_DIR$/app/index/view/login/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="194" column="71" lean-forward="false" selection-start-line="194" selection-start-column="61" selection-end-line="194" selection-end-column="71" />
+        <state relative-caret-position="651">
+          <caret line="91" column="21" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="91" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/event/Order.php">
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Foods.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="844">
-          <caret line="281" column="65" lean-forward="false" selection-start-line="281" selection-start-column="51" selection-end-line="281" selection-end-column="65" />
-          <folding>
-            <marker date="1526175498006" expanded="true" signature="1298:1400" ph="SELECT ${$fi... LJL_FOODS" />
-            <marker date="1526175498006" expanded="true" signature="1816:2082" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
-            <marker date="1526175498006" expanded="true" signature="2200:2468" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
-            <marker date="1526175498006" expanded="true" signature="12428:12596" ph="SELECT t2.FN... LJL_SALETIMES" />
-            <marker date="1526175498006" expanded="true" signature="12973:13071" ph="SELECT t1.FI... LJL_FOODS" />
-            <marker date="1526175498006" expanded="true" signature="13944:14142" ph="SELECT t1.FI... LJL_Reservation" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="97" column="57" lean-forward="false" selection-start-line="96" selection-start-column="8" selection-end-line="97" selection-end-column="57" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index/view/order/item.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+        <state relative-caret-position="240">
+          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/order/cancel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="39" column="17" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="39" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="3619" column="34" lean-forward="false" selection-start-line="3619" selection-start-column="34" selection-end-line="3619" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4893">
+          <caret line="241" column="18" lean-forward="false" selection-start-line="241" selection-start-column="9" selection-end-line="241" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/marker/controller/Order.php">
+    <entry file="file://$PROJECT_DIR$/config/route.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="630">
+          <caret line="38" column="21" lean-forward="false" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/marker/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/app/index/view/order/comment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/event/Marker.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="68" column="20" lean-forward="false" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+        <state relative-caret-position="2037">
+          <caret line="97" column="21" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="97" selection-end-column="21" />
           <folding>
-            <marker date="1526287883100" expanded="true" signature="1189:1426" ph="SELECT t1.FI... LJL_FOODMARKER" />
-            <marker date="1526287883100" expanded="true" signature="1464:1698" ph="SELECT t1.FI... LJL_FOODMARKER" />
-            <marker date="1526287883100" expanded="true" signature="2184:2301" ph="SELECT FID F... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="2644:2796" ph="SELECT FID,D... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="2834:2991" ph="SELECT FID,D... LJL_Reservation" />
-            <marker date="1526287883100" expanded="true" signature="3176:3322" ph="SELECT t2.FN... LJL_SALETIMES" />
-            <marker date="1526287883100" expanded="true" signature="3656:3784" ph="SELECT FFOOD... LJL_Reservationentry" />
+            <element signature="n#style#0;n#textarea#0;n#td#1;n#tr#1;n#table#0;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/app/index/controller/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="82" column="37" lean-forward="false" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index/view/order/today.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="55" column="42" lean-forward="false" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/common/event/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5355">
+          <caret line="260" column="76" lean-forward="false" selection-start-line="260" selection-start-column="76" selection-end-line="260" selection-end-column="76" />
+          <folding>
+            <marker date="1533027205687" expanded="true" signature="1324:1426" ph="SELECT ${$fi... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="1842:2108" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="2226:2494" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
+            <marker date="1533027205687" expanded="true" signature="7349:7829" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8248" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="8127:8607" ph="SELECT FID,F... LJL_Reservation" />
+            <marker date="1533027205687" expanded="true" signature="15208:15306" ph="SELECT t1.FI... LJL_FOODS" />
+            <marker date="1533027205687" expanded="true" signature="16300:16498" ph="SELECT t1.FI... LJL_Reservation" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/js/common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index/controller/Foods.php">
+    <entry file="file://$PROJECT_DIR$/app/index/view/order/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="61" column="32" lean-forward="false" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
+        <state relative-caret-position="451">
+          <caret line="135" column="49" lean-forward="true" selection-start-line="135" selection-start-column="49" selection-end-line="135" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/common/event/Foods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="79" column="17" lean-forward="false" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
-          <folding>
-            <marker date="1526288920855" expanded="true" signature="1997:2250" ph="SELECT t1.FI... LJL_FOODS" />
-            <marker date="1526288920855" expanded="true" signature="2815:3081" ph="SELECT TOP 1... LJL_FOODSALEPRICE" />
-            <marker date="1526288920855" expanded="true" signature="3197:3465" ph="SELECT t2.FS... LJL_FOODSALEPRICE" />
-            <marker date="1526288920855" expanded="true" signature="4411:4448" ph="select FID,F... LJL_FOODGROUP_L" />
-          </folding>
         </state>
       </provider>
     </entry>

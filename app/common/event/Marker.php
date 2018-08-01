@@ -80,7 +80,7 @@ class Marker extends Base {
      * @return array
      */
     public function stats($params){
-        $where = [];
+		$where = [];
         $where['FDATE'] = $params['date'];
         $where['FFOODMARKERID'] = Session::get('marker.id');
         $times = Db::table('LJL_Reservation')->where($where)->group('FDCTIME')->column('FDCTIME');

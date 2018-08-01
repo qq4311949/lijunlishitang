@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link type="text/css" href="__CSS__/css.css" rel="stylesheet"/>
+    <link type="text/css" href="__LIB__/toast/jquery.toast.css" rel="stylesheet" />
+    <title>订单评论</title>
+</head>
+<body>
+<div class="header">
+    <table width="100%" border="0" cellspacing="0" class="header_nav">
+        <tr>
+            <td width="10%" class="nav_left1">
+                <a href='javascript:window.history.go(-1)'><返回</a>
+            </td>
+            <td width="80%" class="nav_title">订单评论</td>
+            <td width="10%" class="nav_r"></td>
+        </tr>
+    </table>
+</div>
+<div class="xx">
+    <div class="xx_1"><img src="__IMG__/ts.png" width="40%" height="auto"/></div>
+    <div class="xx_2">欢迎进入订餐系统</div>
+</div>
+
+<!--/*主要部分*/-->
+<div class="indexmain">
+    <form action="{:url('index/Order/post')}" method="post" id="form">
+        <table width="100%" border="0" cellspacing="0" class="indexmain_1">
+            <tr>
+                <td>评级：</td>
+                <td>
+                    <select id="level" name="level" size="1" class="search_1">
+                        <option value="优">优</option>
+                        <option value="良">良</option>
+                        <option value="差">差</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>内容：</td>
+                <td>
+                    <textarea id="content" name="content" style="width: 100%; height: 80px"></textarea>
+                    <input type="hidden" name="id" value="{$id}">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table width="100%" border="0" cellspacing="0" class="indexmain_2">
+        <tr>
+            <td>
+                <input type="submit" id="comment" value="提交评论" class="text2"/>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<div class="kb"></div>
+<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
+<script type="text/javascript" src="__JS__/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#comment').on('click', function(){
+            var level = $('#level option:selected').val();
+            if (level == '' || level == null || level == undefined) {
+                toast('请选择评级');
+                return false;
+            }
+            var content = $('#content').val();
+            if(content == '' || content == null || content == undefined){
+                toast('请输入评论内容');
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: $('#form').attr('action'),
+                data: $('#form').serialize(),
+                success: function(response) {
+                    if(response.ret == -1){
+                        toast(response.msg);
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }else if(response.ret == 0){
+                        toast(response.msg);
+                    }else{
+                        toast('提交评论成功');
+                        setTimeout(function(){
+                            window.location.href = response.url;
+                        }, 2000)
+                    }
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

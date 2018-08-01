@@ -11,6 +11,8 @@ use think\Session;
 
 class Order extends Base {
 
+    const PAGE_SIZE = 7;
+
     /**
      * 获取菜品列表
      * @param $params
@@ -80,8 +82,8 @@ class Order extends Base {
         if (empty($arr['list'])) {
             failure(0, '请选择菜品');
         }
-        if (date('G') >= '18') {
-            failure(0, '18点以后不能订餐');
+		if (date('G') >= '20') {
+            failure(0, '20点以后不能订餐');
         }
         $reservationLogic = new ReservationLogic();
         $FID = $reservationLogic->getAutoIncId();
@@ -188,30 +190,66 @@ class Order extends Base {
     public function getTodayList() {
         $where['FEMPID'] = Session::get('user.id');
         $where['FDATE'] = date('Y-m-d');
-        $rows = $this->getOrderList($where);
-        return $rows;
-    }
-
-    /**
-     * 获取订单列表
-     * @return array
-     */
-    public function getList() {
-        $where['FEMPID'] = Session::get('user.id');
-        $where['FDATE'] = ['egt', date('Y-m-d', strtotime('+1 day'))];
-        $rows = $this->getOrderList($where);
-        return $rows;
-    }
-
-    /**
-     * 获取订单列表
-     */
-    private function getOrderList($where) {
-        $rows = Db::table('LJL_Reservation')
+        $arr = Db::table('LJL_Reservation')
             ->where($where)
             ->field('FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE')
             ->order('FDATE desc,FID desc')
             ->select();
+        $rows = $this->getOrderList($arr);
+        return $rows;
+    }
+
+    public function getListCount() {
+        $sql = "SELECT FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE FROM LJL_Reservation 
+                WHERE 
+                    FEMPID = '". Session::get('user.id') ."' AND 
+                    FID NOT IN 
+                    (
+                        SELECT
+                            FID
+                        FROM
+                            LJL_BILLEVALUATE
+                        GROUP BY
+                            FID
+                    )
+                ORDER BY FDATE DESC, FID DESC";
+        $res = Db::query($sql);
+        return ceil(count($res) / self::PAGE_SIZE);
+    }
+
+    /**
+     * 获取订单列表
+     * @param int $page
+     * @return array
+     */
+    public function getList($page) {
+        $length = self::PAGE_SIZE;
+        $offset = ($page - 1) * $length;
+        $sql = "SELECT FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE FROM LJL_Reservation 
+                WHERE 
+                    FEMPID = '". Session::get('user.id') ."' AND 
+                    FID NOT IN 
+                    (
+                        SELECT
+                            FID
+                        FROM
+                            LJL_BILLEVALUATE
+                        GROUP BY
+                            FID
+                    )
+                ORDER BY FDATE DESC, FID DESC";
+        $arr = Db::query($sql);
+        $arr = array_slice($arr, $offset, $length);
+        $rows = $this->getOrderList($arr);
+        return $rows;
+    }
+
+    /**
+     * 获取订单列表
+     * @param array $rows
+     * @return array
+     */
+    private function getOrderList($rows) {
         if (!empty($rows)) {
             foreach ($rows as &$row) {
                 $row['FMARKER'] = Db::table('LJL_FOODMARKER_L')->where('FID', $row['FFOODMARKERID'])->value('FNAME');
@@ -220,6 +258,7 @@ class Order extends Base {
                 $row['FTOTAL'] = 0;
                 $row['FDATE'] = date('n月d日', strtotime($row['FDATE']));
                 $row['FFOODS'] = '';
+                $row['url'] = url('index/Order/item', ['id' => $row['FID']]);
                 $items = Db::table('LJL_Reservationentry')->where('FID', $row['FID'])->select();
                 if (!empty($items)) {
                     foreach ($items as $k => &$item) {
@@ -256,7 +295,7 @@ class Order extends Base {
     public function getInfo($params) {
         $where['FID'] = $params['id'];
         $where['FEMPID'] = Session::get('user.id');
-        $where['FCLOSE'] = 0;
+//        $where['FCLOSE'] = 0;
         $row = Db::table('LJL_Reservation')
             ->where($where)
             ->field('FID,FDATE,FFOODMARKERID,FSALEDATE')
@@ -304,7 +343,10 @@ class Order extends Base {
         if (empty($row)) {
             return '该订单不存在';
         }
-        if (strtotime($row['FSALEDATE']) > strtotime(date('Y-m-d 18:00:00'))) {
+        $stopOrderTimeInfo = Db::table('LJL_StopOrderTime')->find();
+        $cancelTime = date('Y-m-d') . ' + ' . $stopOrderTimeInfo['FSTRHOUR'] . ' + ' . $stopOrderTimeInfo['FENDHOUR'] . 'hour';
+        echo $cancelTime;die;
+        if (strtotime($row['FSALEDATE']) > $cancelTime) {
             return '当前时间不能取消订单';
         }
         $amount = Db::table('LJL_Reservationentry')->where('FID', $params['id'])->sum('FAMOUNT');
@@ -421,5 +463,21 @@ class Order extends Base {
         }
         // 取餐成功
         return success(1, [], url('marker/Index/index'));
+    }
+
+    /**
+     * 订单评论
+     * @param $params
+     * @return \think\response\Json
+     */
+    public function comment($params) {
+        $data['FID'] = $params['id'];
+        $data['EVALUATE'] = $params['level'];
+        $data['EVALUATIONS'] = $params['content'];
+        $res = Db::table('LJL_BILLEVALUATE')->insert($data);
+        if (!$res) {
+            failure(0, '提交评论失败');
+        }
+        return success(1, [], url('index/Index/index'));
     }
 }

@@ -45,7 +45,7 @@
                 <td width="20" class="take_phone">
                     <div class="dh">
                         {if condition="$vo.FCLOSE eq 0"}
-                        <a href="{:url('index/Order/item', ['id' => $vo.FID])}">
+                        <a href="{$vo.url}">
                         {/if}
                             <img src="__IMG__/bd{$vo.FCLOSE}.png" width="100%" height="auto"/>
                         {if condition="$vo.FCLOSE eq 0"}
@@ -53,7 +53,7 @@
                         {/if}
                     </div>
                     <div class="jl">
-                        <a href="{:url('index/Order/item', ['id' => $vo.FID])}">
+                        <a href="{$vo.url}">
                             {if condition="$vo.FCLOSE eq 0"}去取餐{else/}已取餐{/if}
                         </a>
                     </div>

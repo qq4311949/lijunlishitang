@@ -11,6 +11,8 @@ class Order extends Validate {
         'shiduan' => 'require|integer|gt:0',
         'carts' => 'require|checkCarts:',
         'id' => 'require|integer|gt:0',
+        'level' => 'require',
+        'content' => 'require'
     ];
 
     protected $regex = [
@@ -31,6 +33,8 @@ class Order extends Validate {
         'id.require' => '订单id不能为空',
         'id.integer' => '订单id必须为整型',
         'id.gt' => '订单id大于0',
+        'level.require' => '评级不能为空',
+        'content.require' => '内容不能为空',
     ];
 
     protected $scene = [
@@ -39,6 +43,8 @@ class Order extends Validate {
         'ok' => ['id'],
         'item' => ['id'],
         'cancel' => ['id'],
+        'comment' => ['id'],
+        'post' => ['id', 'level', 'content'],
         'scan' => ['id'],
     ];
 

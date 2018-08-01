@@ -11,7 +11,9 @@
 
 return [
     '__miss__'    => 'index/Error/index',
-
+	
+	'/'		 	  => ['index/Index/index', ['method' => 'get']],
+	
     'home'        => ['index/Index/index', ['method' => 'get']],
 
     'login'       => ['index/Login/login', ['method' => 'get|post']],
@@ -34,9 +36,12 @@ return [
 
     '[order]'     => [
         'index'      => ['index/Order/index', ['method' => 'get']],
+        'list'       => ['index/Order/getList', ['method' => 'post']],
         'today'      => ['index/Order/today', ['method' => 'get']],
         'item/:id'   => ['index/Order/item', ['method' => 'get'], ['id' => '\d+']],
         'cancel/:id' => ['index/Order/cancel', ['method' => 'get'], ['id' => '\d+']],
+        'comment/:id' => ['index/Order/comment', ['method' => 'get'], ['id' => '\d+']],
+        'post'       => ['index/Order/post', ['method' => 'post']],
         'confirm'    => ['index/Order/confirm', ['method' => 'post']],
         'payment'    => ['index/Order/payment', ['method' => 'post']],
         'ok/:id'     => ['index/Order/ok', ['method' => 'get'], ['id' => '\d+']],

@@ -47,24 +47,17 @@ class Foods extends Base {
                 $FDATE = date('Y-m-d') . ' 23:59:59';
             }
         }
-//        $hour = date('G');
-//		$sql = "SELECT t1.FID,t1.FSALEMAXQTY,t1.FSALEMINQTY,t1.FIMAGE,t2.FNAME,t2.FDESCRIPTION FROM LJL_FOODS t1
-//             INNER JOIN LJL_FOODS_L t2 ON t2.FID = t1.FID
-//             INNER JOIN LJL_FOODSALETIMES t3 ON t3.FID = t1.FID
-//             INNER JOIN LJL_SALETIMES t4 ON t4.FID = t3.FSALETIME
-//             WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FFOODGROUPID = '{$params['cate_id']}'
-//             AND t3.FSALETIME = '{$params['shiduan']}' AND '{$hour}' BETWEEN t4.FSTRHOUR AND t4.FENDHOUR";
-        $sql = "SELECT t1.FID,t1.FSALEMAXQTY,t1.FSALEMINQTY,t1.FIMAGE,t2.FNAME,t2.FDESCRIPTION FROM LJL_FOODS t1 
-             INNER JOIN LJL_FOODS_L t2 ON t2.FID = t1.FID 
-             INNER JOIN LJL_FOODSALETIMES t3 ON t3.FID = t1.FID 
-             INNER JOIN LJL_SALETIMES t4 ON t4.FID = t3.FSALETIME
-             WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FFOODGROUPID = '{$params['cate_id']}' 
-             AND t3.FSALETIME = '{$params['shiduan']}'";
-//        $sql = "SELECT t1.FID,t1.FSALEMAXQTY,t1.FSALEMINQTY,t1.FIMAGE,t2.FNAME,t2.FDESCRIPTION FROM LJL_FOODS t1
-//            INNER JOIN LJL_FOODS_L t2 ON t2.FID = t1.FID
-//            WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FFOODGROUPID = '{$params['cate_id']}'";
+        // $hour = date('G');
+		$sql = "SELECT t1.FID,t1.FSALEMAXQTY,t1.FSALEMINQTY,t1.FIMAGE,t2.FNAME,t2.FDESCRIPTION FROM LJL_FOODS t1 
+            INNER JOIN LJL_FOODS_L t2 ON t2.FID = t1.FID 
+            INNER JOIN LJL_FOODSALETIMES t3 ON t3.FID = t1.FID 
+            WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FFOODGROUPID = '{$params['cate_id']}' 
+            AND t3.FSALETIME = '{$params['shiduan']}'";
+		// $sql = "SELECT t1.FID,t1.FSALEMAXQTY,t1.FSALEMINQTY,t1.FIMAGE,t2.FNAME,t2.FDESCRIPTION FROM LJL_FOODS t1 
+            // INNER JOIN LJL_FOODS_L t2 ON t2.FID = t1.FID 
+            // WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FFOODGROUPID = '{$params['cate_id']}'";
         $rows = Db::query($sql);
-        $res = [];
+		$res = [];
         if(!empty($rows)){
             $where1 = [];
             $where1['t1.FMAKER'] = $params['shitang'];
@@ -81,9 +74,9 @@ class Foods extends Base {
                     $sql = "SELECT t2.FSALEPRICE FROM LJL_FOODSALEPRICE t1 JOIN LJL_FOODSALEPRICEentry t2 ON t2.FID = t1.FID WHERE t1.FMAKER = '{$params['shitang']}' AND t1.FDOCUMENTSTATUS = 'C' AND t1.FDATE < '{$FDATE}' AND t2.FDOODID = '{$row['FID']}' ORDER BY t1.FDATE DESC,t1.FID DESC LIMIT 1";
                 }
                 $arr = Db::query($sql);
-                if(!empty($arr) && isset($arr[0]['FSALEPRICE'])) {
+                if(!empty($arr) && isset($arr[0]['FSALEPRICE'])){
                     $row['FSALEPRICE'] = floatval($arr[0]['FSALEPRICE']);
-                    $res[] = $row;
+					$res[] = $row;
                 }
             }
         }

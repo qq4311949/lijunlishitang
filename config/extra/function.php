@@ -155,6 +155,7 @@ if (!function_exists('array_utf8_encode')) {
 
 function delFile($dir, $file_type = '') {
     if (is_dir($dir)) {
+        echo 1;
         $files = scandir($dir);
         //打开目录 //列出目录中的所有文件并去掉 . 和 ..
         foreach ($files as $filename) {
@@ -183,6 +184,7 @@ function delFile($dir, $file_type = '') {
             }
         }
     } else {
+        echo 2;
         if (file_exists($dir)) unlink($dir);
     }
 }
@@ -192,5 +194,4 @@ if(!function_exists('getRouteByHttpReferer')){
         return str_replace(['http://'.$_SERVER['HTTP_HOST'].'/', '.'.config('url_html_suffix')], '', $_SERVER['HTTP_REFERER']);
     }
 }
-
 
