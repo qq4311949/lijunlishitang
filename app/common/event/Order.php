@@ -298,7 +298,7 @@ class Order extends Base {
 //        $where['FCLOSE'] = 0;
         $row = Db::table('LJL_Reservation')
             ->where($where)
-            ->field('FID,FDATE,FFOODMARKERID,FSALEDATE')
+            ->field('FID,FDATE,FFOODMARKERID,FSALEDATE,FCLOSE')
             ->find();
         $is_can_cancel = 0;
         if (!empty($row)) {
@@ -344,8 +344,7 @@ class Order extends Base {
             return '该订单不存在';
         }
         $stopOrderTimeInfo = Db::table('LJL_StopOrderTime')->find();
-        $cancelTime = date('Y-m-d') . ' + ' . $stopOrderTimeInfo['FSTRHOUR'] . ' + ' . $stopOrderTimeInfo['FENDHOUR'] . 'hour';
-        echo $cancelTime;die;
+        $cancelTime = strtotime('+' . $stopOrderTimeInfo['FSTRHOUR'] . ' day +' . $stopOrderTimeInfo['FENDHOUR'] . ' hour');
         if (strtotime($row['FSALEDATE']) > $cancelTime) {
             return '当前时间不能取消订单';
         }
