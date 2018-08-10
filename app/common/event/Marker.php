@@ -118,4 +118,10 @@ class Marker extends Base {
         $arr = $jssdk->getSignPackage();
         return $arr;
     }
+
+    public function getMarkerList() {
+        $sql = "SELECT t1.FID,t2.FNAME FROM LJL_FOODMARKER t1 JOIN LJL_FOODMARKER_L t2 ON t2.FID = t1.FID WHERE t1.FDOCUMENTSTATUS = 'C'";
+        $rows = Db::query($sql);
+        return !empty($rows) ? $rows : [];
+    }
 }

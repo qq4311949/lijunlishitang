@@ -19,11 +19,14 @@ class Login extends Base {
     public function login($params){
         $where = [];
         $where['FNUMBER'] = $params['number'];
-        $where['FFORBIDSTATUS'] = 'A';
+//        $where['FFORBIDSTATUS'] = 'A';
         $empinfoLogic = new EmpinfoLogic();
         $info = $empinfoLogic->getInfo($where);
         if(empty($info)){
             failure(0, '该用户不存在');
+        }
+        if ($info['FFORBIDSTATUS'] != 'A') {
+            failure(0, '请等待管理员审核');
         }
         if(strcasecmp($params['password'], $info['FPASSWORD']) != 0){
             failure(0, '密码错误');

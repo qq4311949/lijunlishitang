@@ -7,7 +7,7 @@ use app\common\event\Marker as MarkerEvent;
 
 /**
  * 订餐
- * Class Cart
+ * Class Foods
  * @package app\index\controller
  */
 class Foods extends Common {

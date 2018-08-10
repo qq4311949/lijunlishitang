@@ -10,7 +10,7 @@ class EmpinfoLogic {
      * @return array
      */
 	public function getInfo(array $where){
-        $fields = 't1.FID,t1.FNUMBER,t1.FPASSWORD,t1.FSEX,t1.FDEPARTMENTID,t2.FNAME';
+        $fields = 't1.FID,t1.FNUMBER,t1.FPASSWORD,t1.FSEX,t1.FDEPARTMENTID,t1.FFORBIDSTATUS,t2.FNAME';
 		$row = Db::table('LJL_EMPINFO')
             ->alias('t1')
             ->join('LJL_EMPINFO_L t2', 't2.FID = t1.FID')

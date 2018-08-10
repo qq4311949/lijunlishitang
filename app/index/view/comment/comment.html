@@ -18,7 +18,7 @@
             <td width="10%" class="nav_left1">
                 <a href='javascript:window.history.go(-1)'><返回</a>
             </td>
-            <td width="80%" class="nav_title">订单评论</td>
+            <td width="80%" class="nav_title">评论</td>
             <td width="10%" class="nav_r"></td>
         </tr>
     </table>
@@ -30,8 +30,18 @@
 
 <!--/*主要部分*/-->
 <div class="indexmain">
-    <form action="{:url('index/Order/post')}" method="post" id="form">
+    <form action="{:url('index/Comment/comment')}" method="post" id="form">
         <table width="100%" border="0" cellspacing="0" class="indexmain_1">
+            <tr>
+                <td>食堂：</td>
+                <td>
+                    <select id="marker" name="marker" size="1" class="search_1">
+                        {volist name="markers" id="vo"}
+                        <option value="{$vo.FID}">{$vo.FNAME}</option>
+                        {/volist}
+                    </select>
+                </td>
+            </tr>
             <tr>
                 <td>评级：</td>
                 <td>
@@ -46,7 +56,6 @@
                 <td>内容：</td>
                 <td>
                     <textarea id="content" name="content" style="width: 100%; height: 80px"></textarea>
-                    <input type="hidden" name="id" value="{$id}">
                 </td>
             </tr>
         </table>
@@ -68,6 +77,11 @@
 <script type="text/javascript">
     $(function () {
         $('#comment').on('click', function(){
+            var marker = $('#marker option:selected').val();
+            if (marker == '' || marker == null || marker == undefined) {
+                toast('请选择食堂');
+                return false;
+            }
             var level = $('#level option:selected').val();
             if (level == '' || level == null || level == undefined) {
                 toast('请选择评级');
