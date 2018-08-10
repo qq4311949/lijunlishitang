@@ -23,8 +23,8 @@ class Index extends Common {
     public function index(){
         $markerInfo = self::$event->getInfo(Session::get('marker.id'));
         $this->assign('markerName', $markerInfo['FNAME']);
-//        $sign = self::$event->getSignPackage();
-//        $this->assign('sign', $sign);
+        $sign = self::$event->getSignPackage();
+        $this->assign('sign', $sign);
         return $this->fetch();
     }
 

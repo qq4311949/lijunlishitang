@@ -36,12 +36,12 @@ return [
 
     '[order]'     => [
         'index'      => ['index/Order/index', ['method' => 'get']],
-//        'list'       => ['index/Order/getList', ['method' => 'post']],
+        'list'       => ['index/Order/getList', ['method' => 'post']],
         'today'      => ['index/Order/today', ['method' => 'get']],
         'item/:id'   => ['index/Order/item', ['method' => 'get'], ['id' => '\d+']],
         'cancel/:id' => ['index/Order/cancel', ['method' => 'get'], ['id' => '\d+']],
-//        'comment/:id' => ['index/Order/comment', ['method' => 'get'], ['id' => '\d+']],
-//        'post'       => ['index/Order/post', ['method' => 'post']],
+        'comment/:id' => ['index/Order/comment', ['method' => 'get'], ['id' => '\d+']],
+        'post'       => ['index/Order/post', ['method' => 'post']],
         'confirm'    => ['index/Order/confirm', ['method' => 'post']],
         'payment'    => ['index/Order/payment', ['method' => 'post']],
         'ok/:id'     => ['index/Order/ok', ['method' => 'get'], ['id' => '\d+']],
@@ -53,13 +53,6 @@ return [
         'recharge' => ['index/Coffers/recharge', ['method' => 'get|post']],
         'ok/:sum'  => ['index/Coffers/ok', ['method' => 'get'], ['sum' => '\d+(\.\d{1,2})?']],
     ],
-
-    '[comment]'   => [
-        'index'    => ['index/Comment/index', ['method' => 'get']],
-        'list'     => ['index/Comment/getList', ['method' => 'post']],
-        'comment'  => ['index/Comment/comment', ['method' => 'get|post']],
-    ],
-
     // 食堂登录
     'signin'      => ['marker/Sign/in', ['method' => 'get|post']],
     'signout'     => ['marker/Sign/out', ['method' => 'get']],
@@ -75,7 +68,5 @@ return [
         'stat/order'        => ['marker/Stat/order', ['method' => 'post']],
         'scan/:id'          => ['marker/Order/scan', ['method' => 'get'], ['id' => '\d+']],
         'handle'            => ['marker/Order/handle', ['method' => 'post']],
-        'comment/index'     => ['marker/Comment/index', ['method' => 'get']],
-        'comment/list'      => ['marker/Comment/getList', ['method' => 'post']],
     ],
 ];

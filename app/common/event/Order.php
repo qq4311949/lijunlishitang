@@ -11,6 +11,8 @@ use think\Session;
 
 class Order extends Base {
 
+    const PAGE_SIZE = 7;
+
     /**
      * 获取菜品列表
      * @param $params
@@ -188,13 +190,12 @@ class Order extends Base {
     public function getTodayList() {
         $where['FEMPID'] = Session::get('user.id');
         $where['FDATE'] = date('Y-m-d');
-        $rows = $this->getOrderList($where);
-//        $arr = Db::table('LJL_Reservation')
-//            ->where($where)
-//            ->field('FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE')
-//            ->order('FDATE desc,FID desc')
-//            ->select();
-//        $rows = $this->getOrderList($arr);
+        $arr = Db::table('LJL_Reservation')
+            ->where($where)
+            ->field('FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE')
+            ->order('FDATE desc,FID desc')
+            ->select();
+        $rows = $this->getOrderList($arr);
         return $rows;
     }
 
@@ -218,26 +219,37 @@ class Order extends Base {
 
     /**
      * 获取订单列表
+     * @param int $page
      * @return array
      */
-    public function getList() {
-        $where['FEMPID'] = Session::get('user.id');
-        $where['FDATE'] = ['egt', date('Y-m-d', strtotime('+1 day'))];
-        $rows = $this->getOrderList($where);
+    public function getList($page) {
+        $length = self::PAGE_SIZE;
+        $offset = ($page - 1) * $length;
+        $sql = "SELECT FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE FROM LJL_Reservation 
+                WHERE 
+                    FEMPID = '". Session::get('user.id') ."' AND 
+                    FID NOT IN 
+                    (
+                        SELECT
+                            FID
+                        FROM
+                            LJL_BILLEVALUATE
+                        GROUP BY
+                            FID
+                    )
+                ORDER BY FDATE DESC, FID DESC";
+        $arr = Db::query($sql);
+        $arr = array_slice($arr, $offset, $length);
+        $rows = $this->getOrderList($arr);
         return $rows;
     }
 
     /**
      * 获取订单列表
-     * @param array $where
+     * @param array $rows
      * @return array
      */
-    private function getOrderList($where) {
-        $rows = Db::table('LJL_Reservation')
-            ->where($where)
-            ->field('FID,FDATE,FFOODMARKERID,FDCTIME,FCLOSE')
-            ->order('FDATE desc,FID desc')
-            ->select();
+    private function getOrderList($rows) {
         if (!empty($rows)) {
             foreach ($rows as &$row) {
                 $row['FMARKER'] = Db::table('LJL_FOODMARKER_L')->where('FID', $row['FFOODMARKERID'])->value('FNAME');
@@ -246,6 +258,7 @@ class Order extends Base {
                 $row['FTOTAL'] = 0;
                 $row['FDATE'] = date('n月d日', strtotime($row['FDATE']));
                 $row['FFOODS'] = '';
+                $row['url'] = url('index/Order/item', ['id' => $row['FID']]);
                 $items = Db::table('LJL_Reservationentry')->where('FID', $row['FID'])->select();
                 if (!empty($items)) {
                     foreach ($items as $k => &$item) {
@@ -282,10 +295,10 @@ class Order extends Base {
     public function getInfo($params) {
         $where['FID'] = $params['id'];
         $where['FEMPID'] = Session::get('user.id');
-        $where['FCLOSE'] = 0;
+//        $where['FCLOSE'] = 0;
         $row = Db::table('LJL_Reservation')
             ->where($where)
-            ->field('FID,FDATE,FFOODMARKERID,FSALEDATE')
+            ->field('FID,FDATE,FFOODMARKERID,FSALEDATE,FCLOSE')
             ->find();
         $is_can_cancel = 0;
         if (!empty($row)) {

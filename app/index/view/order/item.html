@@ -49,6 +49,19 @@
             <td class="my_buyok_p">餐包括：{$info.FFOODS}</td>
         </tr>
     </table>
+    {if $info.FCLOSE == 1}
+    <table width="100%" border="0" cellspacing="0" class="indexmain_2">
+        <tbody>
+            <tr>
+                <td>
+                    <a href="{:url('index/Order/comment', ['id' => $info.FID])}">
+                        <input type="submit" id="search" value="进行评价" class="text2">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {/if}
 </div>
 
 <div class="kb"></div>
