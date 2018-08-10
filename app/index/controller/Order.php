@@ -78,21 +78,9 @@ class Order extends Common {
      * @return mixed
      */
     public function index() {
-        $list = self::$event->getList(1);
+        $list = self::$event->getList();
         $this->assign('list', $list);
-        $total = self::$event->getListCount();
-        $this->assign('total', $total);
         return $this->fetch();
-    }
-
-    /**
-     * 获取订单列表
-     * @return \think\response\Json
-     */
-    public function getList() {
-        $page = $this->request->post('page', 1, 'int');
-        $res = self::$event->getList($page);
-        return success(1, $res);
     }
 
     /**
@@ -106,7 +94,7 @@ class Order extends Common {
         $res = self::$event->getInfo($data);
         $this->assign('info', $res['data']);
         $this->assign('is_can_cancel', $res['is_can_cancel']);
-		$is_show_qrcode = getRouteByHttpReferer() == 'order/today' ? 1 : 0;
+        $is_show_qrcode = getRouteByHttpReferer() == 'order/today' ? 1 : 0;
         $this->assign('is_show_qrcode', $is_show_qrcode);
         return $this->fetch();
     }
@@ -123,31 +111,5 @@ class Order extends Common {
         $this->assign('id', $data['id']);
         $this->assign('msg', $msg);
         return $this->fetch();
-    }
-
-    /**
-     * 评论订单
-     * @param int id 订单id
-     * @return mixed
-     */
-    public function comment() {
-        $data = $this->request->param();
-        parent::filter($data);
-        $this->assign('id', $data['id']);
-        return $this->fetch();
-    }
-
-    /**
-     * 提交订单评论
-     * @param int id 订单id
-     * @param string level 评级
-     * @param string content 内容
-     * @return \think\response\Json
-     */
-    public function post() {
-        $data = $this->request->post();
-        parent::filter($data);
-        $res = self::$event->comment($data);
-        return $res;
     }
 }

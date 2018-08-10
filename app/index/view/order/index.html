@@ -26,7 +26,7 @@
 </div>
 
 <!--/*主要部分*/-->
-<div class="takemain" data-page="1" data-total="{$total}">
+<div class="takemain">
     {volist name="list" id="vo"}
     <div class="take">
         <table width="100%" border="0" cellspacing="0">
@@ -67,83 +67,4 @@
 
 <div class="kb"></div>
 </body>
-<script type="text/javascript" src="__JS__/jquery.min.js"></script>
-<script type="text/javascript" src="__LIB__/toast/jquery.toast.js"></script>
-<script type="text/javascript" src="__JS__/common.js"></script>
-<script type="text/javascript">
-    $(window).scroll(function () {
-        var scrollTop = $(this).scrollTop();
-        var scrollHeight = $(document).height();
-        var windowHeight = $(this).height();
-        if (scrollTop + windowHeight == scrollHeight) {
-            //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-            var page = $('.takemain').data('page');
-            var total = $('.takemain').data('total');
-            if (page < total) {
-                $.ajax({
-                    type: "POST",
-                    url: "{:url('index/Order/getList')}",
-                    data : {'page': parseInt(page) + 1},
-                    success: function(response) {
-                        if(response.ret == -1){
-                            toast(response.msg);
-                            setTimeout(function(){
-                                window.location.href = response.url;
-                            }, 2000)
-                        }else if(response.ret == 0){
-                            toast(response.msg);
-                        }else{
-                            var html = '';
-                            response.data.forEach(function(item){
-                                html += '<div class="take">\n' +
-                                    '        <table width="100%" border="0" cellspacing="0">\n' +
-                                    '            <tr>\n' +
-                                    '                <td width="30" class="take_pic">\n' +
-                                    '                    <img src="'+item.FIMAGE+'" width="100%" height="auto"/>\n' +
-                                    '                </td>\n' +
-                                    '                <td width="50" class="take_text">\n' +
-                                    '                    <div take_text_1>'+item.FDATE+'-'+item.FDCTIME+'</div>\n' +
-                                    '                    <div>\n' +
-                                    '                        <span>'+item.FQTY+'份</span>\n' +
-                                    '                        <sapn class="jj">￥'+item.FTOTAL+'</sapn>\n' +
-                                    '                    </div>\n' +
-                                    '                    <div class="sj">食堂：'+item.FMARKER+'</div>\n' +
-                                    '                    <div class="sj">菜谱：'+item.FFOODS+'</div>\n' +
-                                    '                </td>\n' +
-                                    '                <td width="20" class="take_phone">\n' +
-                                    '                    <div class="dh">\n';
-                                if (item.FCLOSE == 0) {
-                                    html += '<a href="'+item.url+'">\n';
-                                }
-                                html += '<img src="__IMG__/bd'+item.FCLOSE+'.png" width="100%" height="auto"/>\n';
-                                if (item.FCLOSE == 0) {
-                                    html += '</a>\n';
-                                }
-                                    html += '                    </div>\n' +
-                                    '                    <div class="jl">\n' +
-                                    '                        <a href="'+item.url+'">\n';
-                                if (item.FCLOSE == 0) {
-                                    html += '去取餐';
-                                } else {
-                                    html += '已取餐';
-                                }
-                                    html +=
-                                    '                        </a>\n' +
-                                    '                    </div>\n' +
-                                    '                </td>\n' +
-                                    '            </tr>\n' +
-                                    '        </table>\n' +
-                                    '    </div>';
-                            });
-                            $('.takemain').append(html);
-                            $('.takemain').data('page', parseInt(page) + 1);
-                        }
-                    }
-                });
-            } else if (page == total) {
-                toast('没有更多订单了', 1);
-            }
-        }
-    });
-</script>
 </html>
